@@ -1,0 +1,39 @@
+<div class="page-root">
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="name">ScheduleMaster</span>
+    </div>
+    <nav class="nav">
+      <a routerLink="/" class="nav-link active">Calendar</a>
+      <a routerLink="/" class="nav-link">Events</a>
+      <a routerLink="/" class="nav-link">Settings</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <!-- Left light card -->
+    <div class="left-pane">
+      <app-calendar-card
+        variant="light"
+        monthLabel="September 2021"
+        [activeDate]="19"
+        [weekdays]="lightWeekdays"
+        [weeks]="lightWeeks"
+      ></app-calendar-card>
+    </div>
+
+    <!-- Right dark panel with dark card -->
+    <div class="right-pane">
+      <div class="dark-panel"></div>
+      <app-calendar-card
+        class="on-dark"
+        variant="dark"
+        monthLabel="September 2021"
+        [activeDate]="19"
+        [weekdays]="darkWeekdays"
+        [weeks]="darkWeeks"
+      ></app-calendar-card>
+    </div>
+  </main>
+</div>

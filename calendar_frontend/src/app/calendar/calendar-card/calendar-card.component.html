@@ -1,0 +1,34 @@
+<div class="calendar-card" [class.dark]="variant === 'dark'" [class.light]="variant === 'light'">
+  <div class="calendar-header">
+    <button class="icon-left icon-btn" type="button" aria-label="Previous month">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" focusable="false" aria-hidden="true">
+        <path d="M9.5 3 L5 8 L9.5 13" stroke="#b5bec6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+
+    <div class="month-label" [class.dark-text]="variant==='dark'" [class.light-text]="variant==='light'">
+      {{ monthLabel }}
+    </div>
+
+    <button class="icon-right icon-btn" type="button" aria-label="Next month">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" focusable="false" aria-hidden="true">
+        <path d="M6.5 3 L11 8 L6.5 13" stroke="#b5bec6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="calendar-weekdays">
+    <div class="weekday" *ngFor="let d of weekdays">{{ d }}</div>
+  </div>
+
+  <div class="calendar-weeks">
+    <div class="week-row" *ngFor="let row of weeks">
+      <div class="date-cell" *ngFor="let value of row"
+           [class.active]="isActive(value)"
+           [class.dark-num]="variant==='dark'"
+           [class.light-num]="variant==='light'">
+        <span class="date-number" *ngIf="value !== null">{{ value }}</span>
+      </div>
+    </div>
+  </div>
+</div>

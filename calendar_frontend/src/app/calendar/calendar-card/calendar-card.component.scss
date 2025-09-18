@@ -1,0 +1,154 @@
+/* Ocean Professional tokens (subset) */
+:host {
+  --primary: #2563EB;   /* blue */
+  --secondary: #F59E0B; /* amber */
+  --accent: #F04D23;    /* red highlight for active date */
+  --light: #ffffff;
+  --dark-1: #464646;
+  --dark-2: #333333;
+  --text-dark: #4a5660;
+  --text-muted: #b5bec6;
+
+  display: block;
+}
+
+/* Card base */
+.calendar-card {
+  width: 306px;
+  height: 310px;
+  border-radius: 8px;
+  box-shadow: 2px 16px 19px rgba(0,0,0,0.2);
+  position: relative;
+  background: var(--light);
+
+  &.dark {
+    background: var(--dark-1);
+  }
+
+  &.light {
+    background: var(--light);
+  }
+}
+
+/* Header */
+.calendar-header {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  width: 258px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .icon-btn {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    transition: background 120ms ease, transform 120ms ease;
+    cursor: pointer;
+
+    &:hover {
+      background: linear-gradient(180deg, rgba(37,99,235,0.08), rgba(249,250,251,0.0));
+    }
+    &:active {
+      transform: translateY(1px);
+    }
+
+    svg { display: block; }
+  }
+
+  .month-label {
+    font-family: "Avenir Next LT Pro", Avenir, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 0;
+    text-align: center;
+
+    &.dark-text { color: var(--light); }
+    &.light-text { color: var(--text-dark); }
+  }
+}
+
+/* Weekday row */
+.calendar-weekdays {
+  position: absolute;
+  left: 24px;
+  top: 64px;
+  width: 258px;
+  height: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(7, 30px);
+  justify-content: space-between;
+  align-items: center;
+
+  .weekday {
+    font-family: "Avenir Next LT Pro", Avenir, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+    user-select: none;
+  }
+}
+
+/* Weeks grid */
+.calendar-weeks {
+  position: absolute;
+  left: 24px;
+  top: 106px;
+  width: 258px;
+  display: grid;
+  grid-auto-rows: 30px;
+  row-gap: 12px;
+
+  .week-row {
+    width: 258px;
+    height: 30px;
+    display: grid;
+    grid-template-columns: repeat(7, 30px);
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Date cell */
+.date-cell {
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+  display: grid;
+  place-items: center;
+  position: relative;
+
+  .date-number {
+    font-family: "Avenir Next LT Pro", Avenir, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0;
+    color: var(--text-dark);
+  }
+
+  &.dark-num .date-number {
+    color: var(--light);
+  }
+
+  &.active {
+    background: var(--accent);
+    border-radius: 29px;
+
+    .date-number {
+      color: var(--light);
+    }
+  }
+}

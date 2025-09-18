@@ -1,0 +1,121 @@
+/* Ocean Professional Theme surface */
+:host {
+  --primary: #2563EB;
+  --secondary: #F59E0B;
+  --error: #EF4444;
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --text: #111827;
+  --panel-dark: #333333;
+
+  display: block;
+}
+
+.page-root {
+  min-height: 100dvh;
+  background: linear-gradient(180deg, rgba(37,99,235,0.08), rgba(249,250,251,1));
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top navigation */
+.topbar {
+  height: 56px;
+  background: var(--surface);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--secondary), var(--primary));
+      box-shadow: 0 0 12px rgba(37,99,235,0.35);
+    }
+    .name {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.2px;
+    }
+  }
+
+  .nav {
+    display: flex;
+    gap: 14px;
+
+    .nav-link {
+      color: #1f2937;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: background 120ms ease, color 120ms ease;
+
+      &.active, &:hover {
+        background: rgba(37,99,235,0.08);
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+/* Content area with two panes side-by-side */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 32px 40px;
+
+  .left-pane {
+    display: grid;
+    place-items: start;
+  }
+
+  .right-pane {
+    position: relative;
+    min-height: 420px; /* to accommodate panel and card */
+
+    .dark-panel {
+      position: absolute;
+      inset: 0 0 0 40px; /* simulate panel occupying the right half similar to Figma */
+      background: var(--panel-dark);
+      border-radius: 12px;
+      box-shadow: 0 16px 28px rgba(0,0,0,0.25) inset, 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    app-calendar-card.on-dark {
+      position: relative;
+      display: block;
+      margin: 86px 0 0 106px; /* approximates Figma offsets (left: 572 vs panel start) */
+    }
+  }
+}
+
+/* Responsive adjustment */
+@media (max-width: 960px) {
+  .content {
+    grid-template-columns: 1fr;
+    .right-pane {
+      margin-top: 24px;
+
+      .dark-panel {
+        inset: 0;
+      }
+
+      app-calendar-card.on-dark {
+        margin: 24px auto 0;
+        display: block;
+      }
+    }
+
+    .left-pane {
+      display: grid;
+      place-items: center;
+    }
+  }
+}
